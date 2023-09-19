@@ -40,6 +40,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 
@@ -48,6 +49,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -85,11 +87,14 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, SET);
-  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, RESET);
-  HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, RESET);
-
+  int count_red = 50;
+  int LED_RED_status = 0;
+  int count_yellow = 20;
+  int LED_YELLOW_status = 1;
+  int count_green = 30;
+  int LED_GREEN_status = 1;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -99,6 +104,36 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  	  if(!LED_RED_status && LED_YELLOW_status && LED_GREEN_status){
+	  		  count_red --;
+	  	  }
+	  	  if(LED_RED_status && !LED_YELLOW_status && LED_GREEN_status){
+	  		  count_yellow --;
+	  	  }
+	  	  if(LED_RED_status && LED_YELLOW_status && !LED_GREEN_status){
+	  		  count_green --;
+	  	  }
+	  	  if(count_red <= 0){
+	  		  LED_RED_status = 1;
+	  		  count_red = 50;
+	  		  LED_YELLOW_status = 0;
+	  	  }
+	  	  if(count_yellow <= 0){
+	  		  LED_YELLOW_status = 1;
+	  		  count_yellow = 20;
+	  		  LED_GREEN_status = 0;
+	  	  }
+	  	  if(count_green <= 0){
+	  		  LED_GREEN_status = 1;
+	  		  count_green = 30;
+	  		  LED_RED_status = 0;
+	  	  }
+
+	  	  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, LED_RED_status);
+	  	  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, LED_YELLOW_status);
+	  	  HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, LED_GREEN_status);
+	  	  HAL_Delay(100);
+
   }
   /* USER CODE END 3 */
 }
@@ -136,6 +171,51 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 7999;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 9;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+
 }
 
 /**

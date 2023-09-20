@@ -353,8 +353,6 @@ int main(void)
  80002b2:	480e      	ldr	r0, [pc, #56]	; (80002ec <main+0x1a0>)
  80002b4:	f000 fc9e 	bl	8000bf4 <HAL_GPIO_WritePin>
 
-
-
 	  	  HAL_GPIO_WritePin(LED_RED_2_GPIO_Port, LED_RED_2_Pin, LED_RED_2_status);
  80002b8:	693b      	ldr	r3, [r7, #16]
  80002ba:	b2db      	uxtb	r3, r3
@@ -376,9 +374,6 @@ int main(void)
  80002da:	2180      	movs	r1, #128	; 0x80
  80002dc:	4803      	ldr	r0, [pc, #12]	; (80002ec <main+0x1a0>)
  80002de:	f000 fc89 	bl	8000bf4 <HAL_GPIO_WritePin>
-
-
-
 
 	  	  HAL_Delay(100);
  80002e2:	2064      	movs	r0, #100	; 0x64

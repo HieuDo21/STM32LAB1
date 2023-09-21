@@ -88,7 +88,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, SET);
   HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, RESET);
-
+  int i = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -96,9 +96,14 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_GPIO_TogglePin (LED_RED_GPIO_Port , LED_RED_Pin) ;
-	  HAL_GPIO_TogglePin (LED_YELLOW_GPIO_Port , LED_YELLOW_Pin) ;
-	  HAL_Delay (2000) ;
+
+	  if(i>= 2){
+		  HAL_GPIO_TogglePin (LED_RED_GPIO_Port , LED_RED_Pin);
+		  HAL_GPIO_TogglePin (LED_YELLOW_GPIO_Port , LED_YELLOW_Pin);
+		  i = 0;
+	  }
+	  i++;
+	  HAL_Delay (1000) ;
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

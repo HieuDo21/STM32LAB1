@@ -87,7 +87,7 @@ Disassembly of section .text:
  800014e:	b084      	sub	sp, #16
  8000150:	af00      	add	r7, sp, #0
  8000152:	6078      	str	r0, [r7, #4]
-		uint16_t currentPin = GPIO_PIN_0 << 4+num;
+		uint16_t currentPin = GPIO_PIN_0 << (4+num);
  8000154:	687b      	ldr	r3, [r7, #4]
  8000156:	3304      	adds	r3, #4
  8000158:	2201      	movs	r2, #1

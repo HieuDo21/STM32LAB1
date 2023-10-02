@@ -99,8 +99,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if( counter >= 10) counter = 0;
-	  	  display7SEG ( counter ++) ;
+	  if( counter >= 10){
+		  counter = 0;
+	  }
+	  display7SEG (counter);
+	  counter++;
+
 	  HAL_Delay (1000) ;
   }
   /* USER CODE END 3 */

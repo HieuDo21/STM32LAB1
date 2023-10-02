@@ -2309,16 +2309,16 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x0000000000015193      0x1ed ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
  .debug_macro   0x0000000000015380      0x194 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
 
-.debug_line     0x0000000000000000     0x4544
- .debug_line    0x0000000000000000      0x6ee ./Core/Src/main.o
- .debug_line    0x00000000000006ee      0x635 ./Core/Src/stm32f1xx_hal_msp.o
- .debug_line    0x0000000000000d23      0x6f6 ./Core/Src/stm32f1xx_it.o
- .debug_line    0x0000000000001419      0x6b2 ./Core/Src/system_stm32f1xx.o
- .debug_line    0x0000000000001acb       0x86 ./Core/Startup/startup_stm32f103c6tx.o
- .debug_line    0x0000000000001b51      0x8df ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
- .debug_line    0x0000000000002430      0xac7 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
- .debug_line    0x0000000000002ef7      0x962 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
- .debug_line    0x0000000000003859      0xceb ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+.debug_line     0x0000000000000000     0x4545
+ .debug_line    0x0000000000000000      0x6ef ./Core/Src/main.o
+ .debug_line    0x00000000000006ef      0x635 ./Core/Src/stm32f1xx_hal_msp.o
+ .debug_line    0x0000000000000d24      0x6f6 ./Core/Src/stm32f1xx_it.o
+ .debug_line    0x000000000000141a      0x6b2 ./Core/Src/system_stm32f1xx.o
+ .debug_line    0x0000000000001acc       0x86 ./Core/Startup/startup_stm32f103c6tx.o
+ .debug_line    0x0000000000001b52      0x8df ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_line    0x0000000000002431      0xac7 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_line    0x0000000000002ef8      0x962 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_line    0x000000000000385a      0xceb ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
 
 .debug_str      0x0000000000000000    0x79758
  .debug_str     0x0000000000000000    0x78818 ./Core/Src/main.o

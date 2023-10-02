@@ -61,6 +61,10 @@ void setNumberOnClock(int num){
 void clearAllClock () {
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, RESET);
 }
+void clearNumberOnClock(int num){
+	uint16_t currentPin = GPIO_PIN_0 << (4+num);
+	HAL_GPIO_WritePin(GPIOA, currentPin, RESET);
+}
 /* USER CODE END 0 */
 
 /**
@@ -93,6 +97,7 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   int num = 0;
+  int flag = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,12 +107,21 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	if(num <= 11){
-		setNumberOnClock(num);
-		num++;
-	}else{
-		clearAllClock();
+	if(flag){
+		clearNumberOnClock(num);
+		if(num <= 0){
+			flag = 0;
+		}
+		num--;
 	}
+	if(!flag){
+		setNumberOnClock(num);
+		if(num >= 11){
+			flag = 1;
+		}
+		num++;
+	}
+
 	HAL_Delay(1000);
   }
   /* USER CODE END 3 */

@@ -54,7 +54,10 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void setNumberOnClock(int num){
+	uint16_t currentPin = GPIO_PIN_0 << (4+num);
+	HAL_GPIO_WritePin(GPIOA, currentPin, SET);
+}
 /* USER CODE END 0 */
 
 /**
@@ -97,14 +100,10 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	if(num <= 11){
-		uint16_t currentPin = (GPIO_PIN_0 << (4+num));
-		HAL_GPIO_WritePin(GPIOA, currentPin, SET);
+		setNumberOnClock(num);
 		num++;
-		HAL_Delay(1000);
-
 	}
-
-
+	HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
